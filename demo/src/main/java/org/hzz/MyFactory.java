@@ -9,6 +9,7 @@ public class MyFactory {
     private static Object lock = new Object();
     static{
         init();
+//        new Thread(()->init()).start();
     }
 
     private static void init(){
