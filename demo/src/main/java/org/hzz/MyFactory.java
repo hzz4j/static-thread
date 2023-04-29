@@ -1,10 +1,6 @@
 package org.hzz;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.concurrent.TimeUnit;
-
-@Slf4j
 public class MyFactory {
     private static Object lock = new Object();
     static{
@@ -17,7 +13,7 @@ public class MyFactory {
             try {
                 // make this thread run after main thread
                 TimeUnit.SECONDS.sleep(3);
-                log.info("task run...");
+                System.out.println("task run...");
                 synchronized (lock){
                     lock.notifyAll();
                 }
@@ -28,9 +24,9 @@ public class MyFactory {
 
         synchronized (lock){
             try {
-                log.info("waiting...");
+                System.out.println("waiting...");
                 lock.wait();
-                log.info("wake up");
+                System.out.println("wake up");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
