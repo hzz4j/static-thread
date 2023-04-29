@@ -15,7 +15,7 @@ public class MyFactory {
                 TimeUnit.SECONDS.sleep(3);
                 System.out.println("task run...");
                 synchronized (lock){
-                    lock.notifyAll();
+                    lock.notifyAll();  // notify main thread
                 }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -25,7 +25,7 @@ public class MyFactory {
         synchronized (lock){
             try {
                 System.out.println("waiting...");
-                lock.wait();
+                lock.wait();  // wait
                 System.out.println("wake up");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
